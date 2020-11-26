@@ -1,0 +1,36 @@
+Create voucher for:
+{{#each this.expiryDateOptions as |option|}}
+  <input
+    type="radio"
+    id={{option.label}}
+    name="expiryDate"
+    {{on "click" (fn (mut this.expiryDate) option)}}
+  />
+  <label for={{option.label}}>
+    {{option.label}}
+  </label>
+{{/each}}<br />
+with balance:
+<Input @value={{this.balance}} type="number" />
+<br />
+<button
+  type="button"
+  disabled={{if this.createNewVoucher.isRunning true false}}
+  {{on "click" (fn this.createVoucherForClient @client)}}
+>
+  Create voucher
+</button>
+{{#if this.createNewVoucher.lastPerformed.isSuccessful}}
+  <span class="green">
+    Voucher created successfully ;)
+  </span>
+{{else if this.createNewVoucher.lastPerformed.isError}}
+  <span class="red">
+    Cannot create voucher - try again ;(
+  </span>
+{{/if}}
+{{#if this.showError}}
+  <span class="red">
+    Voucher form is not valid
+  </span>
+{{/if}}
