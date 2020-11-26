@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "experimentalDecorators": true
+  },
+  "include": ["addon/**/*", "tests/**/*", "app/**/*"],
+  "exclude": ["node_modules", "tmp"]
+}
