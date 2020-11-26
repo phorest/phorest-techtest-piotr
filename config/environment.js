@@ -2,6 +2,12 @@
 
 module.exports = function(environment) {
   let ENV = {
+    api: {
+      host: "https://api-gateway-dev.phorest.com/third-party-api-server",
+      namespace: "api/business",
+      businessId: "eTC3QY5W3p_HmGHezKfxJw",
+      branchId: "SE-J0emUgQnya14mOGdQSw"
+    },
     modulePrefix: 'phorest-techtest-piotr',
     environment,
     rootURL: '/',
