@@ -1,0 +1,21 @@
+<Providers::Clients as |provider|>
+  <Forms::FindClient @onValidInput={{provider.fetchClients}} />
+  <br />
+  {{#if provider.isRunning}}
+    Wait...
+  {{else if (eq provider.clients.length 0)}}
+    Results not found ;(
+  {{else}}
+    <ul>
+      {{#each provider.clients as |client|}}
+        <li data-test-client-row>
+          {{client.firstName}} {{client.lastName}} - {{client.email}}
+          / {{client.phone}}
+          <br/>
+        </li>
+        <Forms::CreateVoucher @client={{client}}/>
+        <hr/>
+      {{/each}}
+    </ul>
+  {{/if}}
+</Providers::Clients>
