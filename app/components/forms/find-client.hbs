@@ -1,0 +1,39 @@
+Find client by:
+<div>
+  <input
+    data-test-email-radio
+    type="radio"
+    id="byEmail"
+    name="findBy"
+    {{on "click" (fn (mut this.findBy) "email")}}
+  />
+  <label for="byEmail">
+    email
+  </label>
+</div>
+
+<div>
+  <input
+    data-test-phone-radio
+    type="radio"
+    id="byPhone"
+    name="findBy"
+    {{on "click" (fn (mut this.findBy) "phone")}}
+  />
+  <label for="byPhone">
+    phone
+  </label>
+</div>
+<br />
+{{#if this.findBy}}
+  <Input
+    data-test-search-input
+    @type={{this.type}}
+    {{on "input" this.onChangeInput}}
+  />
+  {{#if this.showError}}
+    <span data-test-error-msg class="red">
+      Input is not valid
+    </span>
+  {{/if}}
+{{/if}}

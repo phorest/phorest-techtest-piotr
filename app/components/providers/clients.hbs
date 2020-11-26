@@ -1,0 +1,8 @@
+{{yield
+  (hash
+    fetchClients=(perform this.fetchClients)
+    clients=this.fetchClients.lastSuccessful.value
+    isRunning=this.fetchClients.isRunning
+    createVoucherForClient=this.createVoucherForClient
+  )
+}}
